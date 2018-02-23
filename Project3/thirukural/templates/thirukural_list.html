@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<head>
+<title>Thirukural</title>
+</head>
+<body>
+<div>
+<form method="get">
+    <input type="text" placeholder="Search" name="q">
+    <button type="submit">Search</button>
+</form>
+</div>
+</br>
+
+{% if kurals.has_previous %}
+<a href="?page={{ kurals.previous_page_number }}&q={{q}}">Prev</a>
+{% else %}
+Prev
+{% endif %}
+
+{{ kurals.number }} of {{ kurals.paginator.num_pages }}
+{% if kurals.has_next %}
+
+<a href="?page={{ kurals.next_page_number }}&q={{q}}">Next</a>
+{% else %}
+Next
+{% endif %}
+<br/>
+<br/>
+<!--{% if q %}
+{{kurals.paginator.num_pages}} search results for {{q}}
+{% else %}
+{% endif %}
+-->
+{% for kural in kurals %}
+<hr>
+
+<p>
+
+<b> குறள் எண் : </b>{{kural.Kural_number}}<br/>
+<b> அத்தியாயம் : </b>{{kural.ChapterName}}<br/>
+ 
+   <i> {{ kural.Verse }} </i>
+</p>
+
+{% endfor %} 
+</body>
+</html>
